@@ -1,33 +1,7 @@
 require("./prototypes");
-const compareValues = require("./compareValues");
+const validate = require("./validate");
 
-/**
- * Validates replicated method (from prototypes file) generates
- * same result as original method
- *
- * @param {Array} arr Array to test
- * @param {String} method Method & Replica to test
- * @param  {...any} args Optional arguments for methos
- */
-const validate = (arr, method, ...args) => {
-  // Call w/ copy of array to prevent direct muation
-  const ogResult = [...arr][method](...args);
-  const replicated = [...arr][`_${method}`](...args);
-  const isSame = compareValues(ogResult, replicated);
-
-  if (isSame) {
-    console.log(
-      `✅   ${method.toUpperCase()}:: replica matches original result`
-    );
-  } else {
-    console.log(
-      `👎    Method ${method.toUpperCase()}:: replica does not matches original result\n`
-    );
-    console.log({ ogResult, replicated });
-  }
-};
-
-// Reduce
+// Reduce --------------------------------
 const reduce_test_fn_1 = (a, c) => a + c;
 const reduce_test_fn_2 = (a, c) => {
   a[c.name] = c.val;
@@ -54,7 +28,7 @@ const reduce_test_2 = [
 validate(reduce_test_1, "reduce", reduce_test_fn_1);
 validate(reduce_test_2, "reduce", reduce_test_fn_2, {});
 
-// Index Of
+// Index Of --------------------------------
 
 const index_of_test_1 = [1, 5, 4, 2, 7, 68, 90];
 const index_of_test_2 = ["test", 5, 5, 8, 8, 0, 0, 1, 2, 3, "test"];
@@ -62,7 +36,7 @@ const index_of_test_2 = ["test", 5, 5, 8, 8, 0, 0, 1, 2, 3, "test"];
 validate(index_of_test_1, "indexOf", 34);
 validate(index_of_test_2, "indexOf", 5);
 
-// Concat
+// Concat --------------------------------
 
 const concat_test_1 = [1, 5, 4, 7, 65, 43];
 const concat_test_2 = ["test", 4, 35];
@@ -70,11 +44,24 @@ const concat_test_2 = ["test", 4, 35];
 validate(concat_test_1, "concat", "hello");
 validate(concat_test_2, "concat", [4, 6, 3, 3, 1]);
 
-// Join
+// Join --------------------------------
 const join_test_1 = ["h", "e", "l", "l", "o"];
 const join_test_2 = [34, "test", 18, 70, { foo: "bar" }];
 
 validate(join_test_1, "join", "");
 validate(join_test_2, "join");
 
-//
+// Some --------------------------------
+const some_test_fn_1 = ele => ele % 2 === 0;
+const some_test_fn_2 = ele => isNaN(parseInt(ele));
+
+const some_test_1 = [3, 5, 2, 2, 7, 4, 8, 9];
+const some_test_2 = [7, 3, 5, 9, "hi"];
+
+const some_test_3 = ["11", "5", 4, 8, 9];
+const some_test_4 = ["17", 18, 19, "hello", 90];
+
+validate(some_test_1, "some", some_test_fn_1);
+validate(some_test_2, "some", some_test_fn_1);
+validate(some_test_3, "some", some_test_fn_2);
+validate(some_test_4, "some", some_test_fn_2);

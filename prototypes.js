@@ -1,5 +1,3 @@
-const compareValues = require("./compareValues");
-
 Array.prototype._reduce = function(cb, ogVal = 0) {
   let val = ogVal;
   for (let i = 0; i < this.length; i++) {
