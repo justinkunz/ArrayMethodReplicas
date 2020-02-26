@@ -2,7 +2,7 @@
 
 Just a fun project recreating each of the built in array methods. Replica array methods defined in the [prototypes.js](./prototypes.js) file. Testing and validation done in [index.js](./index.js).
 
-Naming convention for prototype is `_{{method name}}`
+Naming convention for replica methods is `_{{method name}}`
 
 ##### Example
 
