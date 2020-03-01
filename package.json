@@ -1,0 +1,20 @@
+{
+  "name": "array-methods",
+  "version": "1.0.0",
+  "description": "Just a fun project recreating each of the built in array methods. Replica array methods defined in the [prototypes.js](./prototypes.js) file. Testing and validation done in [index.js](./index.js).",
+  "main": "prototypes.js",
+  "scripts": {
+    "test": "cd test && node ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/justinkunz/ArrayMethodReplicas.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/justinkunz/ArrayMethodReplicas/issues"
+  },
+  "homepage": "https://github.com/justinkunz/ArrayMethodReplicas#readme"
+}
